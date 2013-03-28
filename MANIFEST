@@ -1,0 +1,9 @@
+Changes
+Makefile.PL
+MANIFEST
+META.json
+README
+t/00compile.t
+lib/App/ClockUtils.pm
+bin/notify.pl
+bin/stopwatch.pl
