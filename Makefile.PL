@@ -11,26 +11,30 @@ WriteMakefile(
     ABSTRACT_FROM  => 'lib/Apache2/HideFileExtension.pm',
     AUTHOR         => 'OGATA Tetsuji <tetsuji.ogata at cpan.org>',
     PREREQ_PM      => {
-        'Apache2::Const'       => 0,
-        'Apache2::RequestRec'  => 0,
-        'Apache2::RequestUtil' => 0,
-        'Apache2::SubRequest'  => 0,
+        'AnyEvent'              => 0,
+        'AnyEvent::IRC::Client' => 0
+        'Carp'                  => 0,
+        'Date::Format'          => 0,
+        'Date::Parse'           => 0,
+        'Encode'                => 0,
+        'Exporter'              => 0,
+        'Growl::Any'            => 0,
     },
     PMLIBDIRS      => ["lib"],
     META_MERGE     => {
         resources => {
             license    => 'http://dev.perl.org/licenses/',
-            bugtracker => 'https://github.com/xtetsuji/p5-Apache2-HideFileExtension/issues',
-            repository => 'git://github.com/xtetsuji/p5-Apache2-HideFileExtension.git',
+            bugtracker => 'https://github.com/xtetsuji/p5-App-ClockUtils/issues',
+            repository => 'git://github.com/xtetsuji/p5-App-ClockUtils.git',
         },
     },
     LISENSE        => "perl",
     PL_FILES       => {},
-    EXE_FILES      => [],
+    #EXE_FILES      => ["bin/stopwatch.pl", "bin/notify.pl"],
+    EXE_FILES      => ["bin/notify.pl"],
     dist           => {
         SUFFIX => 'gz',
         COMPRESS => 'gzip -9f',
     },
 );
 
-# TODO: Better ModPerl::MM than EUMM?
