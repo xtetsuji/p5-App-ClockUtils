@@ -6,7 +6,13 @@ use utf8;
 use Carp 'croak';
 use Exporter 'import';
 
-our @EXPORT = (qw(is_multibytes command_detect guess_terminal_encoding str2sec));
+our @EXPORT = (qw(
+    is_multibytes
+    command_detect
+    guess_terminal_encoding
+    str2sec
+    parse_irc_scheme
+));
 
 sub is_multibytes {
     my $str = shift; # internal string
@@ -88,6 +94,30 @@ sub str2sec {
         $seconds = ($cb_time - AnyEvent->time) + $before_after_sec;
     }
     return wantarray ? ($seconds, $cb_time) : $seconds;
+}
+
+sub parse_irc_scheme {
+    my $irc_scheme = shift;
+    return if !$irc_scheme;
+    # irc://yourname:ircpass@ircserver:port/#channel
+    my ($nick, $password, $server, $port, $channel) =
+        $irc_scheme =~ m{
+            \A
+            (?:irc://)?
+            ([a-zA-Z0-9_-]+(:[^@]*)?) # can not use "@" as password char on this syntax.
+            ([0-9a-zA-Z-]+(:[0-9]+)?)
+            /
+            (\#.*)
+            \z
+       }x or return;
+    $port ||= 6667;
+    return +{
+        nick     => $nick,
+        password => $password,
+        server   => $server,
+        port     => $port,
+        channel  => $channel,
+    };
 }
 
 1;
