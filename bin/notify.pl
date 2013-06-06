@@ -56,7 +56,82 @@ notify.pl - Comamnd line utility of alarm and timer.
 
 =head1 DESCRIPTIONS
 
-(stub)
+This program is call at your specific time.
+
+=head1 OPTIONS
+
+=over
+
+=item --terminal|-t
+
+Output notify to terminal.
+
+=item --growl|-g
+
+Output notify to Growl.
+
+=item --voice|-v
+
+Output notify as voice. This option depneds Mac OS X "say" command currently.
+
+=item --growl-sticky|-s
+
+Let sticky outputted Growl notify.
+
+This option is need --growl|-g option togetter (currently implement).
+
+=item --no-terminal|-T
+
+Avoid notify terminal.
+
+This option is default behavior on currently implement.
+Because this option is ignored on currently.
+
+=item --no-growl|-G
+
+Avoid notify Growl.
+
+This option is default behavior on currently implement.
+Because this option is ignored on currently.
+
+=item --no-voice|-V
+
+Avoid notify voice.
+
+This option is default behavior on currently implement.
+Because this option is ignored on currently.
+
+=item --no-growl-sticky|-S
+
+Let non-sticky Growl notify.
+
+This option is ignored on currently.
+
+=item --irc-schema="irc://yourname:yourpass@ircserver:port/#channel
+
+***This option is not implemented yet.***
+
+=item --title="TITLE"
+
+Specify notify title.
+
+This option's default value is this program name.
+
+=item countdown="countdown format"
+
+Specify countdown format string.
+
+This string is used by perl "sprintf" function.
+
+You can include "%d" option in this string.
+
+ --countdown="rest %d minutes. hurry up!"
+
+=item --callback="callback shell command"
+
+***This option is not implemented yet.***
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
