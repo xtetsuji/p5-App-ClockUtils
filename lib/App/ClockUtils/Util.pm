@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use utf8;
 use Carp 'croak';
+use Date::Parse qw(str2time);
 use Exporter 'import';
 
 our @EXPORT = (qw(
@@ -87,7 +88,7 @@ sub str2sec {
             $time_str_pure =~ s{tomorrow}{ time2str('%Y/%m/%d', time()+86400 ) }e;
         }
         #warn "time_str_pure=$time_str_pure"
-        $cb_time = Date::Parse::str2time($time_str_pure);
+        $cb_time = str2time($time_str_pure);
         if ( !$cb_time ) {
             die "ERORR: parse error time string.";
         }
