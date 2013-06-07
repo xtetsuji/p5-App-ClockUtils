@@ -112,13 +112,14 @@ sub parse_irc_scheme {
             \z
        }x or return;
     $port ||= 6667;
-    return +{
+    my %retval = (
         nick     => $nick,
         password => $password,
         server   => $server,
         port     => $port,
         channel  => $channel,
-    };
+    );
+    return wantarray ? %retval : \%retval;
 }
 
 1;
