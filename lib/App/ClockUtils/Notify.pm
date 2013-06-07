@@ -35,7 +35,7 @@ sub new {
     $self->{no_terminal}     = delete $opt->{'no-terminal'};
     $self->{no_growl}        = delete $opt->{'no-growl'};
     $self->{no_growl_sticky} = delete $opt->{'no-growl-sticky'};
-    $self->{irc_schema}      = delete $opt->{'irc-schema'};
+    $self->{irc_schema}      = delete $opt->{'irc-schema'}; ### TODO: IRC implement
     # be must decode()?
     $self->{title}           = decode($terminal_encoding, delete $opt->{title} || $class);
     $self->{countdown}       = decode($terminal_encoding, delete $opt->{countdown} || '');
