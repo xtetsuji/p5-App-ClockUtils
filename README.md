@@ -12,15 +12,30 @@ To install this module type the following:
 
 or using cpanm:
 
-> git clone https://github.com/xtetsuji/p5-App-ClockUtils.git
-
+    git clone https://github.com/xtetsuji/p5-App-ClockUtils.git
     cpanm p5-App-ClockUtils/
 
 TODO: to create rpm and deb package.
 
 #DEPENDENCIES
 
-(stub)
+Dependencies are following CPAN modules:
+
+- AnyEvent
+- AnyEvent::IRC (AnyEvent::IRC::Client)
+- Date::Format
+- Date::Parse
+
+and those Perl core modules:
+
+- Carp
+- Data::Dumper
+- Encode
+- Exporter
+- ExtUtils::MakeMaker (for install)
+- Getopt::Long
+- Test::More (for test)
+- Pod::Usage
 
 #COPYRIGHT AND LICENCE
 
