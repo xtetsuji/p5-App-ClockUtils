@@ -22,6 +22,7 @@ use constant HAVE_GROWL_ANY   => eval {
 use constant HAVE_GROWLNOTIFY => eval {
     0 == system "type growlnotify >/dev/null 2>&1";
 };
+use constant DEBUG => $ENV{DEBUG};
 use App::ClockUtils;
 use App::ClockUtils::Util qw(guess_terminal_encoding);
 use Carp qw(carp croak);
@@ -38,9 +39,9 @@ sub new {
     $self->{title} = delete $opts{title}
         or croak 'require title parameter.';
     $self->{icon}  = delete $opts{icon};
-    print "detect engine\n";
+    print "detect engine\n" if DEBUG;
     my $engine = $self->_detect_engine();
-    print "engine is $engine.\n";
+    print "engine is $engine.\n" if DEBUG;
     return $self;
 }
 
