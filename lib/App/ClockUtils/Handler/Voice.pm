@@ -59,6 +59,11 @@ B<This version is "Mac OS X" (Darwin) only>.
 
 In this module requires "say" Mac command and
 speaker "vicki" (for English) and "kyoko" (for Japanese).
+Currently, this configuration is overriden by assingn those global
+variables to value.
+
+In this version, support English and Japanese only,
+or Mac OS X "say" command only.
 
 =head1 COPYRIGHT AND LICENSE
 
