@@ -6,6 +6,7 @@ use warnings;
 use AnyEvent;
 use AnyEvent::IRC::Client;
 use App::ClockUtils;
+use Carp qw(croak);
 
 use constant DEFAULT_RECONNECT_INTERVAL => 30;
 
@@ -41,14 +42,28 @@ sub _build_irc_client {
             my ($nick)  = $msg->{prefix} =~ /^(.+?)/;
 
             # これはどこから持ってくるか？
-            $self->{publicmsg_cb}->(
+            $self->publicmsg_cb->(
                 irc     => $irc,
                 channel => $channel,
                 comment => $comment,
                 nick    => $nick,
-            ) if $self->{publicmsg_cb};
+            ) if $self->publicmsg_cb;
         },
     );
+}
+
+sub publicmsg_cb {
+    my $self = shift;
+    if ( @_ == 1 ) {
+        my $cb = shift;
+        if ( !ref $cb || ref $cb ne 'CODE' ) {
+            croak 'publicmsg_cb gives callback subroutine reference.';
+        }
+        return $self->{publicmsg_cb} = shift;
+    }
+    else {
+        return $self->{publicmsg_cb};
+    }
 }
 
 sub _build_reconnect_timer {
@@ -83,6 +98,16 @@ sub speak_channel {
     $self->{irc_client}->send_chan(
         $channel => PRIVMSG => $channel => encoding($IRC_CHARSET, $phrase)
     );
+}
+
+sub send_chan {
+    my $self = shift;
+    $self->{irc_client}->send_chan(@_);
+}
+
+sub send_srv {
+    my $self = shift;
+    $self->{irc_client}->send_srv(@_);
 }
 
 1;
