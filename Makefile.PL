@@ -30,8 +30,7 @@ WriteMakefile(
     },
     LISENSE        => "perl",
     PL_FILES       => {},
-    #EXE_FILES      => ["bin/stopwatch.pl", "bin/notify.pl"],
-    EXE_FILES      => ["bin/notify.pl"],
+    EXE_FILES      => ["bin/stopwatch.pl", "bin/notify.pl"],
     dist           => {
         SUFFIX => 'gz',
         COMPRESS => 'gzip -9f',
