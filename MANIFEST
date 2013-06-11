@@ -7,6 +7,7 @@ README.md
 t/00_compile.t
 lib/App/ClockUtils/Handler/Growl.pm
 lib/App/ClockUtils/Handler/IRC.pm
+lib/App/ClockUtils/Handler/Sound.pm
 lib/App/ClockUtils/Handler/Terminal.pm
 lib/App/ClockUtils/Handler/Voice.pm
 lib/App/ClockUtils/Notify.pm
