@@ -56,7 +56,7 @@ sub _detect_engine {
     }
     elsif ( HAVE_COCOA_GROWL ) {
         if ( !$self->{cocoa_growl_registered}++ ) {
-            Cocoa::Growl::gorlw_register(
+            Cocoa::Growl::growl_register(
                 app => ref $self,
                 ($self->{icon} ? (icon => $self->{icon}) : ()),
                 notifications => ["notify"],
