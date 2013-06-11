@@ -110,8 +110,10 @@ sub parse_irc_scheme {
             /
             (\#.*)
             \z
-       }x or return;
-    $port ||= 6667;
+        }x or return;
+    $password =~ s/^:// if $password;
+    $port     =~ s/^:// if $port;
+    $port     ||= 6667;
     my %retval = (
         nick     => $nick,
         password => $password,
