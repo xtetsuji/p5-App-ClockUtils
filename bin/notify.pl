@@ -14,6 +14,7 @@ my $p = Getopt::Long::Parser->new(
 $p->getoptions(
     \my %opt =>
     'version',
+    'help', 'usage',
     'terminal|t', 'growl|g', 'voice|v', 'growl-sticky|s',
     'no-terminal|T', 'no-growl|G', 'no-voice|V', 'no-growl-sticky|S',
     'irc-schema=s', # This option is new.
@@ -61,6 +62,10 @@ This program is call at your specific time.
 =head1 OPTIONS
 
 =over
+
+=item --help|--usage
+
+Show help and exit.
 
 =item --terminal|-t
 

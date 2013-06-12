@@ -40,13 +40,13 @@ sub new {
     $self->{voice}     = delete $opts->{voice};
     $self->{sound}     = delete $opts->{sound};
     $self->{quiet}     = delete $opts->{quiet};
-    $self->{sticky}    = delete $opts->{sticky};
+    $self->{growl_sticky} = delete $opts->{'growl-sticky'};
 
     $self->{no_append_localtime} = delete $opts->{'no-append-localtime'};
 
     # irc
     $self->{irc_charset} = delete $opts->{'irc-charset'};
-    $self->{irc_scheme}  = delete $opts->{'irc-scheme'} || $ENV{STOPWATCH_IRC_SCHEME};
+    $self->{irc_schema}  = delete $opts->{'irc-schema'} || $ENV{STOPWATCH_IRC_SCHEMA};
     # irc_scheme=<username>[:<password>]@<servername>/<channel_name>
 
     $self->{message}     = delete $opts->{message} || $argv[1];
