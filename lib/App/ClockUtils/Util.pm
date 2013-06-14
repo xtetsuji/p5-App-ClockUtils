@@ -1,4 +1,4 @@
-package App::ClockUtils::Util;
+etpackage App::ClockUtils::Util;
 
 use strict;
 use warnings;
@@ -152,7 +152,53 @@ App::ClockUtils::Util - Utility subroutines for ClockUtils.
 
 =head1 SUBROUTINES
 
-(stub)
+=head2 is_multibytes
+
+ my $bool = is_multibytes($str);
+
+This argument is Perl internal string.
+If this string is multibyte as UTF-8, then it returns true.
+
+=head2 command_detect
+
+ my $bool = command_detect('ls');
+
+This argument is shell command.
+If this argument's named command is exist, then it returns true.
+
+Because using "type" command, you have to use bash or some
+compatible shell (zsh and so on).
+
+=head2 guess_terminal_encoding
+
+ my $enc = guess_terminal_encoding();
+
+This subroutine guesses terminal encoding from $ENV{LANG}.
+
+When it can not $ENV{LANG}, it returns 'utf-8' for fallback,
+in current implement. But some future release, this implement is
+may be changed.
+
+=head str2sec
+
+ my $sec = str2sec($str);
+
+This subroutine parses first argument as date and time string,
+and returns this translated integer seconds since epoch.
+
+This subroutine uses Date::Parse::str2time() subroutine.
+So it needs Date::Parse module.
+
+=head2 parse_irc_scheme
+
+ my %data = parse_irc_scheme("irc://yourname:ircpass@ircserver:port/#channel");
+
+This subroutine parses "IRC schema".
+The "IRC schema" is this modules only used syntax (it is not official syntax).
+
+It returns hash or hash reference of IRC connection data from "IRC schema".
+
+It provides keys are "nick", "password", "server" , "port", and "channel".
 
 =head1 REQUIRES
 
