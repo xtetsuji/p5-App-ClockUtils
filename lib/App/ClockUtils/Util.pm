@@ -204,6 +204,8 @@ It provides keys are "nick", "password", "server" , "port", and "channel".
 
 This command uses bash and it's builtin command "type" for detection.
 
+And this module requires L<Date::Parse> module for str2sec().
+
 =head1 COPYRIGHT AND LICENSE
 
 Copyright (C) 2013 by OGATA Tetsuji
