@@ -1,4 +1,4 @@
-etpackage App::ClockUtils::Util;
+package App::ClockUtils::Util;
 
 use strict;
 use warnings;
