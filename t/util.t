@@ -23,4 +23,23 @@ ok(is_multibytes('まるちばいと'), 'Japanese Hiragana is UTF-8 multibyte');
 ok(is_multibytes('マルチバイト'), 'Japanese Katakana is UTF-8 multibyte');
 ok(is_multibytes('This is 複合バイト文字'), 'Japanese Kanji included it is UTF-8 multibyte');
 
+# tests of guess_terminal_encoding
+
+{
+    local $ENV{LANG} = 'C';
+    is(guess_terminal_encoding(), "ascii", "LANG=C to ascii.");
+}
+{
+    local $ENV{LANG} = 'en_US.UTF-8';
+    is(guess_terminal_encoding(), "utf-8", "LANG=en_US.UTF-8 to utf-8.");
+}
+{
+    local $ENV{LANG} = 'xx_XX.euc-jp';
+    is(guess_terminal_encoding(), 'euc-jp', "LANG=xx_XX.euc-jp to euc-jp.");
+}
+{
+    local $ENV{LANG};
+    is(guess_terminal_encoding(), "ascii", "Undefined LANG to ascii");
+}
+
 done_testing();
