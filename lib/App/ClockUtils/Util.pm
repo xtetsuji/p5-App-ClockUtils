@@ -68,7 +68,7 @@ sub str2sec {
                      ;
         #warn "dir_op=$dir_op{$dir} x=$x unit_ini=$unit_int"
         $seconds = $dir_op{$dir} * $x * $unit_int;
-        print "seconds is $seconds\n";
+        #print "seconds is $seconds\n";
     }
     elsif ( $time_str =~ /^\s*(before|after):(\d+)(?:min|:)(\d+)(?:sec)?$/ ) {
         my ($dir, $min, $sec) = ($1, $2, $3);
