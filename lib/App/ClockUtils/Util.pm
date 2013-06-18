@@ -38,7 +38,10 @@ sub guess_terminal_encoding {
     if (!$lang) {
         return "ascii";
     }
-    elsif ( $lang =~ /utf-?8/ ) {
+    elsif ( $lang eq 'C' ) {
+        return "ascii";
+    }
+    elsif ( $lang =~ /utf-?8/i ) {
         return "utf-8";
     }
     elsif ( $lang =~ /\./ ) {
@@ -46,7 +49,7 @@ sub guess_terminal_encoding {
         return $enc;
     }
     else {
-        return "utf-8";
+        return "ascii";
     }
 }
 
