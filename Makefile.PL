@@ -7,8 +7,8 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME           => 'App::ClockUtils',
-    VERSION_FROM   => 'lib/App/ClockUtils',
-    ABSTRACT_FROM  => 'lib/App/ClockUtils',
+    VERSION_FROM   => 'lib/App/ClockUtils.pm',
+    ABSTRACT_FROM  => 'lib/App/ClockUtils.pm',
     AUTHOR         => 'OGATA Tetsuji <tetsuji.ogata at cpan.org>',
     PREREQ_PM      => {
         'AnyEvent'              => 0,
