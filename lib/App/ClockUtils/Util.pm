@@ -7,6 +7,8 @@ use Carp 'croak';
 use Date::Parse qw(str2time);
 use Exporter 'import';
 
+require bytes; # for bytes::length
+
 our @EXPORT = (qw(
     is_multibytes
     command_detect
@@ -16,9 +18,9 @@ our @EXPORT = (qw(
 ));
 
 sub is_multibytes {
-    my $str = shift; # internal string
+    my $str = shift; # $str is internal string
     my @chars = split //, $str;
-    return grep { bytes::length($_) >= 2 } @chars;
+    return scalar grep { bytes::length($_) >= 2 } @chars;
 }
 
 sub command_detect {
