@@ -47,7 +47,19 @@ is(str2sec("after:5"),      5, "after:5 means 5min.");
 is(str2sec("after:10sec"), 10, "after:10sec means 10sec.");
 is(str2sec("after:2min"), 120, "after:2min means 120sec.");
 is(str2sec("now"),          0, "now means 0sec.");
-is(str2sec("-"),            0, "- means 0sec.");
-is(str2sec("."),            0, ". means 0sec.");
+is(str2sec("-"),            0, "'-' means 0sec.");
+is(str2sec("."),            0, "'.' means 0sec.");
+
+# tests of parse_irc_scheme
+is_deeply(
+    +{ parse_irc_scheme('irc://user1@server1:1234/#channel1') },
+    +{
+        nick => 'user1',
+        server => 'server1',
+        port => '1234',
+        channel => '#channel1',
+    },
+    'parse_irc_scheme has no password.'
+);
 
 done_testing();
