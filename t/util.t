@@ -61,5 +61,16 @@ is_deeply(
     },
     'parse_irc_scheme has no password.'
 );
+is_deeply(
+    +{ parse_irc_scheme('irc://user2:p4ssw0rd@server2:6667/#channel2') },
+    +{
+        nick => 'user2',
+        server => 'server2',
+        port => '6667',
+        password => 'p4ssw0rd',
+        channel => '#channel2',
+    },
+    'parse_irc_scheme has password string.'
+);
 
 done_testing();
