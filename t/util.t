@@ -42,4 +42,12 @@ ok(is_multibytes('This is 複合バイト文字'), 'Japanese Kanji included it i
     is(guess_terminal_encoding(), "ascii", "Undefined LANG to ascii");
 }
 
+# tests of str2sec.
+is(str2sec("after:5"),      5, "after:5 means 5min.");
+is(str2sec("after:10sec"), 10, "after:10sec means 10sec.");
+is(str2sec("after:2min"), 120, "after:2min means 120sec.");
+is(str2sec("now"),          0, "now means 0sec.");
+is(str2sec("-"),            0, "- means 0sec.");
+is(str2sec("."),            0, ". means 0sec.");
+
 done_testing();
