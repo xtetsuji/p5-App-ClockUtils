@@ -110,18 +110,19 @@ sub parse_irc_scheme {
         $irc_scheme =~ m{
             \A
             (?:irc://)?
-            ([a-zA-Z0-9_-]+(:[^@]*)?) # can not use "@" as password char on this syntax.
-            ([0-9a-zA-Z-]+(:[0-9]+)?)
-            /
-            (\#.*)
+            ([a-zA-Z0-9_-]+)(:[^@]*)? # can not use "@" as password char on this syntax.
+            @                         # separator
+            ([0-9a-zA-Z-]+)(:[0-9]+)? # server and port
+            /                         # separator
+            (\#.*)                    # channel
             \z
-        }x or return;
+        }x;
     $password =~ s/^:// if $password;
     $port     =~ s/^:// if $port;
     $port     ||= 6667;
     my %retval = (
         nick     => $nick,
-        password => $password,
+        (defined $password && length $password ? (password => $password) : ()),
         server   => $server,
         port     => $port,
         channel  => $channel,
