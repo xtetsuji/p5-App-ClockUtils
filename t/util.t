@@ -72,5 +72,27 @@ is_deeply(
     },
     'parse_irc_scheme has password string.'
 );
+is_deeply(
+    +{ parse_irc_scheme('irc://user3@server3/#channel3') },
+    +{
+        nick => 'user3',
+        server => 'server3',
+        port => '6667',
+        channel => '#channel3',
+    },
+    'parse_irc_scheme has only required strings.'
+);
+is_deeply(
+    +{ parse_irc_scheme('user4:pass4@server4/#channel4') },
+    +{
+        nick => 'user4',
+        server => 'server4',
+        password => 'pass4',
+        port => '6667',
+        channel => '#channel4',
+    },
+    'parse_irc_scheme has only required strings without irc schema.'
+);
+
 
 done_testing();
