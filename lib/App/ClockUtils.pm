@@ -5,17 +5,12 @@ use warnings;
 
 our $VERSION = '0.0001';
 
-sub new {
-    my $class = shift;
-    bless {}, $class;
-}
-
 # stopwatch (stopwatch)
 # notify (timer, alerm)
 # timer
 # alarm
 
-# iphone: worldclock, alarm, stopwatch, timer
+# e.g. iPhone category: worldclock, alarm, stopwatch, timer.
 
 1;
 
@@ -29,7 +24,9 @@ App::ClockUtils - ClockUtils main module
 
 =head1 SYNOPSIS
 
- # internal used
+ # This module is internal used
+ # see: perldoc notify.pl
+ # see: perldoc stopwatch.pl
 
 =head1 COPYRIGHT AND LICENSE
 
