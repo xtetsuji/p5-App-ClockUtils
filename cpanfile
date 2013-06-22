@@ -11,3 +11,7 @@ requires 'Date::Parse';
 requires 'Encode';
 requires 'Exporter';
 requires 'Growl::Any';
+
+on test => sub {
+    requires 'Test::More', "0.98";
+};
