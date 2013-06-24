@@ -94,5 +94,8 @@ is_deeply(
     'parse_irc_scheme has only required strings without irc schema.'
 );
 
+# tests of command_detect
+ok(command_detect('perl'), 'perl command is exist.');
+ok(!command_detect('__________dummycommand__________'), 'dummy command is not found');
 
 done_testing();
