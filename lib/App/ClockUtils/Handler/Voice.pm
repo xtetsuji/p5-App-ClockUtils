@@ -6,6 +6,7 @@ use strict;
 use warnings;
 use utf8;
 use App::ClockUtils;
+use App::ClockUtils::Util qw/is_multibytes/;
 
 our $VERSION = $App::Clockutils::VERSION;
 
@@ -23,13 +24,13 @@ sub speak {
     return if $^O ne 'darwin';
     my $phrase = shift;
     my $speaker = $self->speaker($phrase);
-    return 0 == system 'say', '-v', $speaker, encode('utf-8', $phrase);
+    return 0 == system 'say', '-v', $speaker, Encode::encode('utf-8', $phrase);
 }
 
-sub spekaer {
+sub speaker {
     my $self = shift;
     my $phrase = shift;
-    if ( is_multibyte($phrase) ) {
+    if ( is_multibytes($phrase) ) {
         return $self->{voice_ja} || $VOICE_JA;
     }
     else {
