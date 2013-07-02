@@ -8,6 +8,8 @@ use App::ClockUtils::Notify;
 use Getopt::Long ();
 use Pod::Usage qw(pod2usage);
 
+use constant DEBUG => $ENV{DEBUG};
+
 my $p = Getopt::Long::Parser->new(
     config => [qw(posix_default no_ignore_case auto_help)]
 );
@@ -35,8 +37,10 @@ if ( @ARGV != 2 ) {
 }
 
 ### DEBUG
-use Data::Dumper;
-print "DEBUG: " . Dumper([\%opt, \@ARGV]) . "\n";
+if ( DEBUG ) {
+    require Data::Dumper;
+    print "DEBUG: " . Data::Dumper::Dumper([\%opt, \@ARGV]) . "\n";
+}
 
 App::ClockUtils::Notify->new(\%opt, @ARGV)->run;
 
