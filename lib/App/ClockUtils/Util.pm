@@ -98,7 +98,8 @@ sub str2sec {
         if ( !$cb_time ) {
             die "ERORR: parse error time string.";
         }
-        $seconds = ($cb_time - AnyEvent->time) + $before_after_sec;
+        #$seconds = ($cb_time - AnyEvent->time) + $before_after_sec;
+        $seconds = ($cb_time - time()) + $before_after_sec;
     }
     return wantarray ? ($seconds, $cb_time) : $seconds;
 }
