@@ -4,7 +4,8 @@ use strict;
 use warnings;
 use utf8;
 use Carp 'croak';
-use Date::Parse qw(str2time);
+use Date::Parse  qw(str2time);
+use Date::Format qw(time2str);
 use Exporter 'import';
 
 require bytes; # for bytes::length
