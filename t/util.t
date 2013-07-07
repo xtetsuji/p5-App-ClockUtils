@@ -50,7 +50,7 @@ is(str2sec("now"),          0, "now means 0sec.");
 is(str2sec("-"),            0, "'-' means 0sec.");
 is(str2sec("."),            0, "'.' means 0sec.");
 my $tomorrow = str2sec("tomorrow");
-ok( $tomorrow > 0 && $tomorrow < 86400, "tomorrow is between 0 and 86400.");
+ok( $tomorrow > 0 && $tomorrow < 86400, "tomorrow is between 0 and 86400. sec is $tomorrow.");
 
 # tests of parse_irc_scheme
 is_deeply(
