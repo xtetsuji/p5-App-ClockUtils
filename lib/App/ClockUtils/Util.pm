@@ -96,7 +96,7 @@ sub str2sec {
         #warn "time_str_pure=$time_str_pure"
         $cb_time = str2time($time_str_pure);
         if ( !$cb_time ) {
-            die "ERORR: parse error time string.";
+            die "ERROR: parse error time string.";
         }
         #$seconds = ($cb_time - AnyEvent->time) + $before_after_sec;
         $seconds = ($cb_time - time()) + $before_after_sec;
@@ -119,6 +119,7 @@ sub parse_irc_scheme {
             (\#.*)                    # channel
             \z
         }x;
+    return if !defined $server;
     $password =~ s/^:// if $password;
     $port     =~ s/^:// if $port;
     $port     ||= 6667;
