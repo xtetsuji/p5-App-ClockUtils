@@ -52,6 +52,13 @@ is(str2sec("."),            0, "'.' means 0sec.");
 my $tomorrow = str2sec("tomorrow");
 ok( $tomorrow > 0 && $tomorrow < 86400, "tomorrow is between 0 and 86400. sec is $tomorrow.");
 
+{
+    # use Test::Exception?
+    local $@;
+    my $sec = eval { str2sec("illigal_string"); };
+    like($@, qr/^ERROR:/, "When str2sec is given illigal string, it throw exception.");
+}
+
 # tests of parse_irc_scheme
 is_deeply(
     +{ parse_irc_scheme('irc://user1@server1:1234/#channel1') },
@@ -95,6 +102,7 @@ is_deeply(
     },
     'parse_irc_scheme has only required strings without irc schema.'
 );
+#is(parse_irc_scheme('iro://user5@server5/#channel5'), undef, "typo schema returnes undef.");
 
 # tests of command_detect
 ok(command_detect('perl'), 'perl command is exist.');
