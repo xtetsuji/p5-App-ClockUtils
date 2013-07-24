@@ -1,6 +1,13 @@
 App-ClockUtils
 ======================================
 
+#DESCRIPTION
+
+This program serves "notify.pl" and "stopwatch.pl" command.
+Those commands are for management time and date.
+
+Please see "perldoc notify.pl" and "perldoc stopwatch.pl" for detail.
+
 #INSTALLATION
 
 To install this module type the following:
